@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Demo HR</title>
-    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
 
     <script type="text/javascript" src="scripts/app.js"></script>
@@ -23,9 +23,25 @@
             <p>
                 <button onclick="showList()"> Show List</button>
             </p>
+
+            <p>
+                <button onclick="totalSalary()"> Salary Total</button>
+            </p>
+
+            <p>
+                <button onclick="delLastEmployee()"> Delete Last Employee</button>
+            </p>
+
+            <p>
+                <button onclick="convertSalary()"> Convert Salary</button>
+            </p>
         </div>
 
         <div id="listcontainer">
+
+        </div>
+
+        <div id="salarycontainer">
         </div>
 
     </div>
@@ -49,12 +65,11 @@
             </p>
 
             <p>
-                Salary: <input type="text" id="salary"/>
-            </p>
+                Salary: <input type="number" id="salary"/>
 
-            <p>
                 <button onclick="addEmployee()"> Add employee</button>
             </p>
+
         </div>
 
     </div>
