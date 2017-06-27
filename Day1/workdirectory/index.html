@@ -5,7 +5,30 @@
     h1 {
         color: blue;
     }
+
+    #parentpic{
+        position: relative;
+        height: 300px;
+    }
+    #pic{
+        position: absolute;
+        top:10%;
+        left:35%;
+        width:100%;
+        height:100%;
+    }
+
+    #backg{
+            position: absolute;
+            top:8%;
+            left:30%;
+            width:30%;
+            height:95%;
+            background-color: black;
+    }
+
     </style>
+    <script type="text/javascript" src="scripts/app.js"></script>
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="css/main.css"/>
     <meta charset="UTF-8">
@@ -39,7 +62,6 @@
     <ul class="list-group">
         <li class="list-group-item"><a href="list.html">Employees
             list</a></li>
-        <li class="list-group-item"><a href="list.html">Add employee</a></li>
     </ul>
 </div>
 
@@ -47,6 +69,15 @@
     <button type="button" onclick="showMenu()" class="btn btn-default">Show Meniu</button>
     <button type="button" onclick="hideMenu()" class="btn btn-default">Hide Meniu</button>
 </div>
+<div id="parentpic" onmouseover="hideBack() " onmouseout="showBack()" >
+   <div id="pic" onclick="showF()">
+        <img id = "chuckpic" src="../chuck.jpg" alt="CN" >
+    </div>
+    <div id="backg">
+
+    </div>
+</div>
+
 
 </body>
 </html>

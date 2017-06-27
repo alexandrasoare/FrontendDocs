@@ -38,12 +38,22 @@ var employeeList = [
         euroValue: null
     }
 ];
+
+var facts = [
+"Chuck Norris threw a grenade and killed 50 people, then it exploded.",
+"Chuck Norris counted to infinity. Twice.",
+"Chuck Norris can kill two stones with one bird.",
+"Chuck Norris can hear sign language."
+];
+
+var factind =0;
+
 var ifshow = false;
 var ifsalary = false;
 var salInEuro = false;
 
 function showList() {
-    var myTable = '<table class = "table table-hover"><tr><th>First Name</th> <th>Last Name</th> <th>Phone</th>' +
+    var myTable = '<table id = "empTable" class = "table table-hover"><tr><th>First Name</th> <th>Last Name</th> <th>Phone</th>' +
         '<th>Salary</th><th>    </th><th>   </th></tr>';
 
         for(var i in employeeList) {
@@ -201,4 +211,164 @@ function getNrUniqueNames() {
             nr++;
     }
     return nr;
+}
+
+function alphabeticFirstCmp(a, b) {
+    var lna = a.firstName.length;
+    var lnb = b.firstName.length;
+    var i=0;
+    while(i < lna && i < lnb){
+        if(a.firstName[i]>b.firstName[i])
+            return 1;
+        else if(a.firstName[i]<b.firstName[i])
+            return -1;
+        else
+            i++;
+    }
+    if(lna >= i) return 1;
+    if(lnb >= i) return -1;
+    return 0;
+}
+
+function alphabeticLastCmp(a, b) {
+    var lna = a.lastName.length;
+    var lnb = b.lastName.length;
+    var i=0;
+    while(i < lna && i < lnb){
+        if(a.lastName[i]>b.lastName[i])
+            return 1;
+        else if(a.lastName[i]<b.lastName[i])
+            return -1;
+        else
+            i++;
+    }
+    if(lna >= i) return 1;
+    if(lnb >= i) return -1;
+    return 0;
+}
+
+function phoneCmp(a, b) {
+    var lna = a.phone.length;
+    var lnb = b.phone.length;
+    var i=0;
+    while(i < lna && i < lnb){
+        if(a.phone[i]>b.phone[i])
+            return 1;
+        else if(a.phone[i]<b.phone[i])
+            return -1;
+        else
+            i++;
+    }
+    if(lna >= i) return 1;
+    if(lnb >= i) return -1;
+    return 0;
+}
+
+function salaryCmp(a, b) {
+    return a.salary - b.salary;
+}
+
+function sort() {
+    var choose = document.getElementById("inputSort").value;
+    switch (parseInt(choose)) {
+        case 1:
+            employeeList.sort(alphabeticFirstCmp);
+            break;
+
+        case 2:
+            employeeList.sort(alphabeticLastCmp);
+            break;
+
+        case 3:
+            employeeList.sort(phoneCmp);
+            break;
+
+        case 4:
+            employeeList.sort(salaryCmp);
+            break;
+
+        default: break;
+    }
+
+    if(ifshow)
+        showList();
+}
+
+function filter() {
+    var choose = document.getElementById("inputFilter").value;
+    /*var myTable = '<table id = "empTable" class = "table table-hover"><tr><th>First Name</th> <th>Last Name</th> <th>Phone</th>' +
+        '<th>Salary</th><th>    </th><th>   </th></tr>';
+
+    for(var i in employeeList) {
+
+        if(choose == employeeList[i].firstName || choose == employeeList[i].lastName
+            || choose == employeeList[i].phone || choose == String(employeeList[i].salary))
+            if(salInEuro)
+                myTable += '<tr><td>' + employeeList[i].firstName + '</td><td>'
+                    + employeeList[i].lastName + '</td><td>'
+                    + employeeList[i].phone + '</td><td>'
+                    + employeeList[i].euroValue.toFixed(2) + '</td><td>'
+                    + '<p> <button onclick=\"visRow(' + i + ')\"> Vizualizare </button></p>' + '</td><td>'
+                    + '<p> <button onclick=\"delRow(' + i + ')\"> Stergere </button></p>' + '</td></tr>';
+
+            else
+                myTable += '<tr><td>' + employeeList[i].firstName + '</td><td>'
+                    + employeeList[i].lastName + '</td><td>'
+                    + employeeList[i].phone + '</td><td>'
+                    + employeeList[i].salary + '</td><td>'
+                    + '<p> <button onclick=\"visRow(' + i + ')\"> Vizualizare </button></p>' + '</td><td>'
+                    + '<p> <button onclick=\"delRow(' + i + ')\"> Stergere </button></p>' + '</td></tr>';
+
+    }
+
+    myTable += '<tr><td>'+ mostCommonName() +'</td><td>'+ getNrUniqueNames() +'</td><td>'+ mostCommonNumbers()
+        +'</td><td>'+ getAvg() +'</td><td>   </td><td>    </td></tr></table>';
+
+    var container = document.getElementById('listcontainer');
+    container.innerHTML = myTable;
+    */
+    console.log(choose);
+    var tb = document.getElementById("empTable");
+    var tbRows = tb.getElementsByTagName("tr");
+    console.log(tbRows.length);
+    var index = 1;
+    for(var i in employeeList){
+        if(choose != employeeList[i].firstName && choose != employeeList[i].lastName
+            && choose != employeeList[i].phone && choose != String(employeeList[i].salary)) {
+            tbRows[index].style.display = 'none';
+        }
+        else{
+            tbRows[index].style.display = 'table-row';
+        }
+        index++;
+    }
+
+
+}
+
+function hideBack() {
+
+    document.getElementById("backg").style.display = 'none';
+
+}
+var isImg = false;
+
+function showBack() {
+    document.getElementById("backg").style.display='block';
+    if(isImg) {
+        var code = '<img id = "chuckpic" src="../chuck.jpg" alt="CN" >';
+        var container = document.getElementById('pic');
+        container.innerHTML = code;
+        isImg = false;
+    }
+}
+
+function showF() {
+    isImg = true;
+    console.log("dsads");
+    var code = '<p>' + facts[factind]+'</p>';
+    factind = (factind + 1) % facts.length;
+    var container = document.getElementById('pic');
+    container.innerHTML = code;
+
 }
