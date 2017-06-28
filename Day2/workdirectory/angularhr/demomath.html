@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo math</title>
+</head>
+<body ng-app="hrApp">
+<div ng-controller="OperationsController" >
+    <div>
+    <p> Number A : <input type="text" ng-model="a"> </p>
+    <p> Number B : <input type="text" ng-model="b"> </p>
+    </div>
+    <div>
+        <p> <button type="button" ng-click="add()" class="btn btn-default"> + </button> =  <span ng-bind="rez1"></span> </p>
+        <p> <button type="button" ng-click="sub()" class="btn btn-default"> - </button> =  <span ng-bind="rez2"></span> </p>
+        <p> <button type="button" ng-click="mul()" class="btn btn-default"> * </button> =  <span ng-bind="rez3"></span> </p>
+        <p> <button type="button" ng-click="div()" class="btn btn-default"> / </button> =  <span ng-bind="rez4"></span></p>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="../../../../FrontendCode/angularhr/bower_components/jquery/jquery.js"></script>
+<script type="text/javascript" src="../../../../FrontendCode/angularhr/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="../../../../FrontendCode/angularhr/bower_components/angular/angular.js"></script>
+<script type="text/javascript" src="scripts/app.js"></script>
+<script type="text/javascript" src="scripts/OperationsController.js"></script>
+
+</body>
+</html>

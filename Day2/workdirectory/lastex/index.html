@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HR Application</title>
+    <link rel="stylesheet" type="text/css" href="../../../../FrontendCode/HrPage/bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../../FrontendCode/HrPage/bower_components/bootstrap/dist/css/bootstrap-theme.css"/>
+</head>
+<body ng-app = "hrApp">
+    <nav class="navbar navbar-default">
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" ng-controller="MainController">
+                <ul class="nav navbar-nav">
+                    <li ><a href="scripts/menu.html">Menu</a></li>
+                    <li ><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">Employees<span   class="caret"></span>
+                           </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li ng-repeat="action in EmpList"><a href="{{action.url}}">{{action.label}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div><!-- /.navbar-collapse -->
+        </div>
+    </nav>
+
+    <div ng-include="'scripts/menu.html'"></div>
+    <script type="text/javascript" src="../../../../FrontendCode/HrPage/bower_components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="../../../../FrontendCode/HrPage/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../../../../FrontendCode/HrPage/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+    <script type="text/javascript" src="scripts/MainController.js"></script>
+
+
+</body>
+</html>
