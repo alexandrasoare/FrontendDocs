@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colors</title>
+</head>
+<body>
+    <div class="container" ng-controller="ColorsController">
+        <select ng-model="myColor3" ng-options="color.text for color in colors track by color.text" ng-change="changeColor()"></select>
+
+        <select ng-model="myColor4" ng-options="color.text group by color.type for color in colors"></select>
+
+        <span ng-class="selectedColor">Selected</span>
+    </div>
+</body>
+</html>
