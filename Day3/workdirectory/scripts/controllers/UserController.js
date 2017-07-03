@@ -5,7 +5,7 @@ hrApp.controller('UserController', ['$scope','$location','UserService',  functio
 
     $scope.listHide = false;
     $scope.user = {};
-    $scope.users = [];
+    $scope.users =  UserService.userList;;
     $scope.back = function () {
         $location.url('/');
     };
@@ -20,9 +20,7 @@ hrApp.controller('UserController', ['$scope','$location','UserService',  functio
 
     };
     $scope.showHide = function () {
-        if($scope.listHide == false){
-            $scope.users = UserService.userList;
-        }
+
         $scope.listHide ^= true;
 
     };
