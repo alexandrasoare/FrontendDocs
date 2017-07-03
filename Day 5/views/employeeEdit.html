@@ -1,0 +1,124 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2 class="panel-title">Edit employee <b>{{employee.firstName}} {{employee.lastName}}</b></h2>
+    </div>
+    <div class="panel-body">
+        <ng-form name="employeeEditForm">
+            <!--TODO#HR7-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <!--TODO#HR3-->
+                    <div class="form-group" ng-class="{ 'has-error': employeeEditForm.firstName.$invalid }">
+                        <!--TODO#HR2-->
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" class="form-control" ng-model="employee.firstName" required>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!--TODO#HR3-->
+                    <div class="form-group" ng-class="{ 'has-error': employeeEditForm.lastName.$invalid }">
+                        <!--TODO#HR2-->
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" class="form-control" ng-model="employee.lastName" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <!--TODO#HR3-->
+                    <div class="form-group" ng-class="{ 'has-error': employeeEditForm.email.$invalid }">
+                        <!--TODO#HR2-->
+                        <label for="email">Email:</label>
+                        <input type="text" id="email" name="email" class="form-control" ng-model="employee.email" required>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!--TODO#HR3-->
+                    <div class="form-group" ng-class="{ 'has-error': employeeEditForm.phoneNr.$invalid }">
+                        <!--TODO#HR2-->
+                        <label for="phoneNr">Phone Number:</label>
+                        <input type="text" id="phoneNr" name="phoneNr" class="form-control" ng-model="employee.phoneNumber" required>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error': employeeEditForm.hireDate.$invalid && employeeEditForm.hireDate.$dirty }">
+                        <label for="hireDate">Hire Date:</label>
+                        <input type="text" id="hireDate" name="hireDate" class="form-control" ng-model="employee.hireDate"
+                               placeholder="Hire Date" ng-pattern="datePattern" required>
+                        <span class="help-block" ng-show="employeeEditForm.hireDate.$error.required
+                             && employeeEditForm.hireDate.$dirty">{{requiredErrorMessage}}</span>
+                        <span class="help-block" ng-show="employeeEditForm.hireDate.$error.pattern
+                             && employeeEditForm.hireDate.$dirty">{{patternDateNotRespectedMessage}}</span>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!--TODO#HR3-->
+                    <div class="form-group" ng-class="{ 'has-error': employeeEditForm.job.$invalid }">
+                        <!--TODO#HR2-->
+                        <label for="job">Job:</label>
+                        <select id="job" ng-model="employee.jobId" name="job" class="form-control" required
+                                ng-options="job.jobTitle for job in jobs track by job.jobId">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <!--TODO#HR3-->
+                    <div class="form-group" ng-class="{ 'has-error': employeeEditForm.salary.$invalid }">
+                        <!--TODO#HR2-->
+                        <label for="salary">Salary:</label>
+                        <input type="text" id="salary" name="salary" class="form-control" ng-model="employee.salary" required>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error': employeeEditForm.commissionPct.$invalid && employeeEditForm.commissionPct.$dirty }">
+                        <label for="commissionPct">Commission:</label>
+                        <input type="text" id="commissionPct" name="commissionPct" class="form-control" ng-model="employee.commissionPct"
+                               placeholder="Commission" ng-pattern="commissionPattern" required>
+                        <span class="help-block" ng-show="employeeEditForm.commissionPct.$error.required
+                             && employeeEditForm.commissionPct.$dirty">{{requiredErrorMessage}}</span>
+                        <span class="help-block" ng-show="employeeEditForm.commissionPct.$error.pattern
+                             && employeeEditForm.commissionPct.$dirty">{{patternCommisionNotRespectedMessage}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <!--TODO#HR3-->
+                    <div class="form-group">
+                        <!--TODO#HR2-->
+                        <label for="department">Departament:</label>
+                        <select id="department" ng-model="employee.departmentId" name="department" class="form-control" required
+                                ng-options="dept.departmentName for dept in deptartments track by dept.departmentId">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group" ng-class="{ 'has-error': employeeEditForm.manager.$invalid }">
+                        <label for="manager">Manager:</label>
+                        <select id="manager" ng-model="employee.managerId" name="manager" class="form-control" required
+                                ng-options="manager.firstName+' '+ manager.lastName for manager in managers track by manager.employeeId">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-7">
+                    <div class="container">
+                        <!--TODO#HR4-->
+                        <button type="button" ng-click="reset()">Reset</button>
+                        <button type="button" ng-click="create(employee)" ng-disabled="employeeEditForm.$invalid">Save</button>
+                        <button type="button" ng-click="delete(employee)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </ng-form>
+    </div>
+</div>
